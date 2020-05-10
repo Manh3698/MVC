@@ -1,0 +1,33 @@
+﻿@model List<dotnetMVC.Models.Student>
+@{
+    ViewData["Title"] = "Student's list";
+    var students = Model;
+}
+<div class="text-center">
+        <table class="table">
+            <tr>
+                <th>StudentId</th>
+                <th>StudentName</th>
+                <th>Birthday</th>
+                <th>Class</th>
+                <th></th>
+            </tr>
+            @if(students != null){
+                foreach(var student in students)
+                {
+                    <tr>
+                        <td>@student.StudentId</td>
+                        <td>@student.StudentName</td>
+                        <td>@student.BirthDate</td>
+                        <td>@student.Class.ClassName</td>
+                        @* <td>@student.ClassId</td> *@
+                        <td>
+                            <a class ="btn btn-success" href="/student/detail/@student.StudentId">Detail</a>
+                            <a class ="btn btn-primary" href="/student/edit/@student.StudentId">Edit</a>
+                            <a class ="btn btn-danger" href="/">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+</div>
